@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $project->contributors = $data['contributors'];
         $project->lang = $data['lang'];
         $project->link_github = $data['link_github'];
-        $project->type_id = $data['link_id'];
+        $project->type_id = $data['type_id'];
         $project->save();
         
         return redirect()->route('admin.projects.index');
@@ -69,8 +69,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {   
-
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
